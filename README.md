@@ -1,7 +1,7 @@
 Fast serialization for Lua
 ==========================
 
-local marshal = require "marshal"
+(forked from [richardhundt/lua-marshal@fc9451f](https://github.com/richardhundt/lua-marshal/tree/fc9451fccfeec1ebf523f107ececb219fd0bade3))
 
 Provides:
 ---------
@@ -19,11 +19,18 @@ All functions take an optional constants table which, if encountered during seri
 are simply referenced from the constants table passed during deserialization. For example:
 
 ```Lua
+local marshal = require "marshal"
+
 local orig = { answer = 42, print = print }
 local pack = marshal.encode(orig, { print })
 local copy = marshal.decode(pack, { print })
 assert(copy.print == print)
 ```
+
+Installation (from source)
+------------
+
+A simple [`luarocks make`](https://github.com/luarocks/luarocks/wiki/make) should suffice.
 
 Hooks
 -----
@@ -76,4 +83,3 @@ Attempt to serialize C functions, threads and userdata without a `__persist` hoo
 raises an exception.
 
 Serialized code is not portable.
-
