@@ -530,11 +530,21 @@ static int mar_clone(lua_State* L)
     return 1;
 }
 
+static int mar_is_encoded(lua_State* L) {
+  const char *s = luaL_checkstring(L, 1);
+  int isEncoded = (*(unsigned char *)s++ == MAR_MAGIC);
+
+  lua_pushboolean(L, isEncoded);
+
+  return 1;
+}
+
 static const luaL_Reg R[] =
 {
     {"encode",      mar_encode},
     {"decode",      mar_decode},
     {"clone",       mar_clone},
+    {"isEncoded",   mar_is_encoded},
     {NULL,	    NULL}
 };
 
