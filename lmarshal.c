@@ -544,7 +544,7 @@ static const luaL_Reg R[] =
     {"encode",      mar_encode},
     {"decode",      mar_decode},
     {"clone",       mar_clone},
-    {"isEncoded",   mar_is_encoded},
+    {"is_encoded",   mar_is_encoded},
     {NULL,	    NULL}
 };
 
